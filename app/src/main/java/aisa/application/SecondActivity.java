@@ -58,20 +58,6 @@ public class SecondActivity extends AppCompatActivity {
         EventBus.getDefault().register(this);
     }
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-
-        super.onRestoreInstanceState(savedInstanceState);
-
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-
-        super.onSaveInstanceState(outState);
-        outState.putSerializable("category", categories);
-    }
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(Categories categories) {
         this.categories = categories;

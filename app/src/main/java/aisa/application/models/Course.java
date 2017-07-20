@@ -1,7 +1,11 @@
 package aisa.application.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+
+import aisa.application.Contact;
+import aisa.application.Services;
 
 /**
  * Created by admin on 7/7/17.
@@ -28,24 +32,24 @@ public class Course {
     }
 
     public List<Images> getImages() {
-        return images;
+        return images != null ? images : new ArrayList<Images>();
     }
 
 
     public List<Branches> getBranches() {
-        return branches;
+        return branches != null ? branches : new ArrayList<Branches>();
     }
 
     public List<Categories> getCategories() {
-        return categories;
+        return categories != null ? categories : new ArrayList<Categories>();
     }
 
     public List<Contacts>  getContacts() {
-        return contacts;
+        return contacts != null ? contacts : new ArrayList<Contacts>();
     }
 
     public List<Model_Services>  getServices() {
-        return services;
+        return services != null ? services : new ArrayList<Model_Services>();
     }
 
     public String getDescription() {

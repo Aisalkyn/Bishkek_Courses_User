@@ -1,10 +1,13 @@
 package aisa.application;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -32,7 +35,7 @@ import static aisa.application.ForumService.builder;
  */
 
 
-public class ThirdActivity extends AppCompatActivity {
+public class ThirdActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView listView;
     private SubCategories subCategories;
 
@@ -48,6 +51,7 @@ public class ThirdActivity extends AppCompatActivity {
         setTitle(subCategory);
         if (subCategory != null && !subCategory.isEmpty()) {
             getCourses(subCategory);
+            listView.setOnItemClickListener(this);
         }
     }
 
@@ -56,7 +60,7 @@ public class ThirdActivity extends AppCompatActivity {
         service.getCoursesBySubcategory(subC).enqueue(new Callback<List<SimplifiedCourse>>() {
             @Override
             public void onResponse(Call<List<SimplifiedCourse>> call, Response<List<SimplifiedCourse>> response) {
-                listView.setAdapter(new SimplifiedCourseAdapter(getApplicationContext(), R.layout.cell2,response.body()));
+                listView.setAdapter(new SimplifiedCourseAdapter(getApplicationContext(), R.layout.cell2, response.body()));
             }
 
             @Override
@@ -66,4 +70,13 @@ public class ThirdActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String name = ((SimplifiedCourse) parent.getItemAtPosition(position)).getName();
+        Intent intent = new Intent(this, FourthActivity.class);
+        intent.putExtra("courseName", name);
+        startActivity(intent);
+
+
+    }
 }

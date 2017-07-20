@@ -18,6 +18,9 @@ import aisa.application.R;
 
 public class ServiceAdapter extends ArrayAdapter<Model_Services> {
 
+    private List<Model_Services> services;
+
+
     public ServiceAdapter (Context context, List<Model_Services> list)
     {
         super(context, 0, list);
@@ -38,9 +41,9 @@ public class ServiceAdapter extends ArrayAdapter<Model_Services> {
 
 
 
-            textView1.setText(m.getServiceName());
-            textView2.setText(m.getServiceDescr());
-            textView3.setText(m.getServicePrice());
+            textView1.setText(m.getName());
+            textView2.setText(m.getDescription());
+            textView3.setText(m.getPrice());
 
         }
 

@@ -6,29 +6,29 @@ package aisa.application.models;
 
 
 public class Model_Services {
-    String serviceName;
-    String serviceDescr;
-    String servicePrice;
+    String name;
+    String description;
+    String price;
 
 
 
     public Model_Services (String n, String d, String p)
     {
-        this.serviceName = n;
-        this.serviceDescr = d;
-        this.servicePrice = p;
+        this.name = n;
+        this.description = d;
+        this.price = p;
 
     }
 
-    public String getServiceName() {
-        return serviceName;
+    public String getName() {
+        return name;
     }
 
-    public String getServiceDescr() {
-        return serviceDescr;
+    public String getDescription() {
+        return description;
     }
 
-    public String getServicePrice() {
-        return servicePrice;
+    public String getPrice() {
+        return price;
     }
 }

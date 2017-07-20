@@ -25,6 +25,16 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.List;
+
+import aisa.application.adapters.CustomGrid;
+import aisa.application.models.Branches;
+import aisa.application.models.Categories;
+
 /**
  * Created by admin on 7/17/17.
  */
@@ -33,6 +43,7 @@ public class Address extends AppCompatActivity implements OnMapReadyCallback, Go
 
     private LatLng position;
     private GoogleMap mMap;
+    private List<Branches> branches;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,4 +180,17 @@ public class Address extends AppCompatActivity implements OnMapReadyCallback, Go
     public void onProviderDisabled(String provider) {
 
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(List<Branches> branches) {
+        this.branches = branches;
+        EventBus.getDefault().unregister(this);
+    }
+
 }

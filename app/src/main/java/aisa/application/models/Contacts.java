@@ -5,11 +5,16 @@ package aisa.application.models;
  */
 
 public class Contacts {
-    private int contactType;
+    private int contacttype;
     private String data;
 
-    public int getContactType() {
-        return contactType;
+    public Contacts(int contacttype, String data) {
+        this.contacttype = contacttype;
+        this.data = data;
+    }
+
+    public int getContacttype() {
+        return contacttype;
     }
 
     public String getData() {

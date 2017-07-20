@@ -15,7 +15,7 @@
 
 
         <TextView
-            android:id="@+id/contatType"
+            android:id="@+id/contactType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

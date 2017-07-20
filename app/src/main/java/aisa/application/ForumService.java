@@ -10,6 +10,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 /**
@@ -26,10 +27,14 @@ public interface ForumService {
     @GET("getAllCategories")
     Call<List<Categories>> getAllCategories();
 
-    @GET("/getCoursesBySubcategory/{subCategoryname}")
+    @GET("getCoursesBySubcategory/{subCategoryname}")
     Call<List<SimplifiedCourse>> getCoursesBySubcategory(@Path("subCategoryname") String sub);
 
-    @GET("/getAllSimplifiedCourses")
+    @GET("getAllSimplifiedCourses")
     Call<List<SimplifiedCourse>> getAllSimplifiedCourses();
+
+    @GET("getCourseByName/{coursename}")
+    Call<Course> getCourseByName(@Path("coursename") String name);
+
 }
 

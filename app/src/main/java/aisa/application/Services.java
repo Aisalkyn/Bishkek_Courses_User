@@ -8,10 +8,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import aisa.application.adapters.ServiceAdapter;
+import aisa.application.models.Contacts;
 import aisa.application.models.Model_Services;
 
 /**
@@ -20,44 +25,36 @@ import aisa.application.models.Model_Services;
 
 public class Services extends AppCompatActivity {
 
-    private Toolbar toolbar;
     ListView listview;
+    private List<Model_Services> services;
+
+    public Services() {
+        services = new ArrayList<>();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contacts);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        listview = (ListView)findViewById(R.id.listcontact);
+        listview = (ListView) findViewById(R.id.listcontact);
+
+        setTitle("Services");
 
 
+    }
 
-        if (toolbar != null)
-        {
-            setSupportActionBar(toolbar);
-            toolbar.setTitle("G PlayStore");
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            setTitle("Services");
-        }
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
 
-
-        List<Model_Services> list = new ArrayList<>();
-        list.add(new Model_Services("Aaaaa", "kvbsdvbsdkvbsdkubvdsubvjfhbvjfbvjshbv", "5000"));
-        list.add(new Model_Services("Bbbbb", "vckdrhvbkhvb", "621"));
-        list.add(new Model_Services("Ccccc", "bgtbwrtbw)", "1000"));
-
-        listview.setAdapter(new ServiceAdapter(this, list));
-
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Intent intent = new Intent(Services.this, FourthActivity.class);
-                startActivity(intent);
-
-            }
-        });
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(List<Model_Services> services) {
+        this.services = services;
+        listview.setAdapter(new ServiceAdapter(this, services));
+        EventBus.getDefault().unregister(this);
     }
 
 }
