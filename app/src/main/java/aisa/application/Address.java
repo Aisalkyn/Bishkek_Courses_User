@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -23,13 +24,17 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import aisa.application.adapters.CustomGrid;
 import aisa.application.models.Branches;
@@ -44,6 +49,12 @@ public class Address extends AppCompatActivity implements OnMapReadyCallback, Go
     private LatLng position;
     private GoogleMap mMap;
     private List<Branches> branches;
+    private String courseName;
+
+
+    public Address() {
+        branches = new ArrayList<>();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,14 +90,41 @@ public class Address extends AppCompatActivity implements OnMapReadyCallback, Go
         mMap = googleMap;
         mMap.setOnMapClickListener(this);
         if (mMap != null) {
-            Location location = getLocation();
-            if (location != null) {
-                LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location)).position(position).title("Current location"));
-                CameraPosition myPosition = new CameraPosition.Builder().target(latLng).zoom(14).bearing(90).tilt(30).build();
-                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(myPosition));
+            ArrayList<Marker> markers = getMarkers();
+
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            for (Marker marker : markers) {
+                builder.include(marker.getPosition());
             }
+            LatLngBounds bounds = builder.build();
+            int padding = 16; // offset from edges of the map in pixels
+            CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+            CameraUpdate zoom=CameraUpdateFactory.zoomTo(15);
+
+            mMap.animateCamera(zoom);
+            mMap.moveCamera(cu);
+
+
         }
+    }
+
+    private ArrayList<Marker> getMarkers() {
+        ArrayList<Marker> markers = new ArrayList<>();
+        double lon = 0, lat = 0;
+
+        for (int i = 0; i < branches.size(); ++i) {
+            lat = Double.parseDouble(branches.get(i).getLatitude());
+            lon = Double.parseDouble(branches.get(i).getLongitude());
+
+            LatLng latLng = new LatLng(lat, lon);
+            Marker marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.
+                    fromResource(R.drawable.ic_location)));
+
+            markers.add(marker);
+        }
+
+        return markers;
+
     }
 
     public Location getLocation() {
@@ -95,68 +133,67 @@ public class Address extends AppCompatActivity implements OnMapReadyCallback, Go
                 PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
-        }else
-        try {
-            LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-            mMap.setMyLocationEnabled(true);
-            // getting GPS status
-            boolean isGPSEnabled = locationManager
-                    .isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } else
+            try {
+                LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+                mMap.setMyLocationEnabled(true);
+                // getting GPS status
+                boolean isGPSEnabled = locationManager
+                        .isProviderEnabled(LocationManager.GPS_PROVIDER);
 
-            // getting network status
-            boolean isNetworkEnabled = locationManager
-                    .isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+                // getting network status
+                boolean isNetworkEnabled = locationManager
+                        .isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-            if (!isGPSEnabled && !isNetworkEnabled) {
-                // no network provider is enabled
-            } else {
-                if (isNetworkEnabled) {
+                if (!isGPSEnabled && !isNetworkEnabled) {
+                    // no network provider is enabled
+                } else {
+                    if (isNetworkEnabled) {
 
 
-                    locationManager.requestLocationUpdates(
-                            LocationManager.NETWORK_PROVIDER,
-                            100,
-                            10000, this);
-                Log.d("Network", "Network Enabled");
-                if (locationManager != null) {
-                    location = locationManager
-                            .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-                    if (location != null) {
-                        position = new LatLng(location.getLatitude(), location.getLongitude());
+                        locationManager.requestLocationUpdates(
+                                LocationManager.NETWORK_PROVIDER,
+                                100,
+                                10000, this);
+                        Log.d("Network", "Network Enabled");
+                        if (locationManager != null) {
+                            location = locationManager
+                                    .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                            if (location != null) {
+                                position = new LatLng(location.getLatitude(), location.getLongitude());
+                            }
+                        }
                     }
-                }
-            }
-            // if GPS Enabled get lat/long using GPS Services
-            if (isGPSEnabled) {
-                if (location == null) {
-                    locationManager.requestLocationUpdates(
-                            LocationManager.GPS_PROVIDER,
-                            100,
-                            10000, this);
-                    Log.d("GPS", "GPS Enabled");
-                    if (locationManager != null) {
-                        location = locationManager
-                                .getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                        if (location != null) {
-                            position = new LatLng(location.getLatitude(), location.getLongitude());
+                    // if GPS Enabled get lat/long using GPS Services
+                    if (isGPSEnabled) {
+                        if (location == null) {
+                            locationManager.requestLocationUpdates(
+                                    LocationManager.GPS_PROVIDER,
+                                    100,
+                                    10000, this);
+                            Log.d("GPS", "GPS Enabled");
+                            if (locationManager != null) {
+                                location = locationManager
+                                        .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                                if (location != null) {
+                                    position = new LatLng(location.getLatitude(), location.getLongitude());
+                                }
+                            }
                         }
                     }
                 }
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }
 
-    } catch (Exception e) {
-        e.printStackTrace();
+        return location;
     }
-
-    return location;
-}
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == 100){
+        if (requestCode == 100) {
             getLocation();
         }
     }
@@ -188,9 +225,22 @@ public class Address extends AppCompatActivity implements OnMapReadyCallback, Go
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(List<Branches> branches) {
-        this.branches = branches;
+    public void onMessageEvent(Map.Entry<List<Branches>, String> entry) {
+        this.courseName = entry.getValue();
+        this.branches = entry.getKey();
+        //addLocations();
         EventBus.getDefault().unregister(this);
     }
+
+    /*
+     * This method is to add markers on the given locations
+     */
+   /* private void addLocations() {
+        mMap.clear();
+        mMap.addMarker(new MarkerOptions().icon(
+                BitmapDescriptorFactory
+                        .fromResource(R.drawable.ic_location))
+                .position(position = point));
+    }*/
 
 }

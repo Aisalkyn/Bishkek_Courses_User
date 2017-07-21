@@ -15,7 +15,9 @@ import com.synnapps.carouselview.ViewListener;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import aisa.application.models.Branches;
@@ -126,7 +128,8 @@ public class FourthActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                EventBus.getDefault().post(branches);
+
+                EventBus.getDefault().post(new AbstractMap.SimpleEntry<List<Branches>, String>(branches, courseName));
             }
         }, 100);
         goToActivity(Address.class);

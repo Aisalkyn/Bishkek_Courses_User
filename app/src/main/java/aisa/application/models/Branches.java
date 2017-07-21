@@ -6,18 +6,22 @@ package aisa.application.models;
 
 public class Branches {
     private String phone;
-    private double latitude;
-    private double longitude;
+    private String latitude;
+    private String longitude;
     private  String address;
 
+    public Branches(String phone, String latitude, String longitude, String address) {
+        this.phone = phone;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.address = address;
+    }
 
-    private String _id;
-
-    public double getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public double getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
@@ -29,9 +33,6 @@ public class Branches {
         return address;
     }
 
-    public String get_id() {
-        return _id;
-    }
 
 
 }
