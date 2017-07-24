@@ -2,36 +2,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="10dp"
     android:orientation="horizontal"
     app:cardCornerRadius="5dp"
-    android:layout_margin="10dp"
-    app:cardUseCompatPadding="true"
-    >
+    app:cardUseCompatPadding="true">
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <TextView
             android:id="@+id/contactType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
             android:layout_margin="10dp"
-            android:textSize="20dp"
-            android:text="TextView" />
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="20dp" />
+
         <TextView
             android:id="@+id/contactLink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
             android:layout_margin="10dp"
-            android:textSize="20dp"
-            android:text="TextView" />
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="18dp" />
     </LinearLayout>
 
 

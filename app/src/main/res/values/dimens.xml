@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="marImg">10dp</dimen>
+    <dimen name="marSmall">3dp</dimen>
+    <dimen name="img">100dp</dimen>
+    <dimen name="cell_height">120dp</dimen>
+
+    <dimen name="grid_img_width">140dp</dimen>
+    <dimen name="grid_img_height">160dp</dimen>
+
+</resources>

@@ -9,8 +9,8 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
@@ -19,7 +19,7 @@
             android:value="AIzaSyBG68yCuZrCf1xKWY6PTszCBk8PmeH3nyU" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".CategoriesActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,25 +27,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SecondActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".ThirdActivity"
-            android:parentActivityName=".SecondActivity" />
-        <activity
-            android:name=".FourthActivity"
-            android:parentActivityName=".ThirdActivity" />
-        <activity
-            android:name=".Address"
-            android:parentActivityName=".FourthActivity" />
-        <activity
-            android:name=".Contact"
-            android:parentActivityName=".FourthActivity" />
-        <activity
-            android:name=".Services"
-            android:parentActivityName=".FourthActivity" />
 
+        <activity android:name=".SubCategoriesActivity"/>
+        <activity android:name=".CoursesActivity"/>
+        <activity android:name=".CourseDetailActivity"/>
+
+        <activity android:name=".AddressActivity" />
+        <activity android:name=".ContactActivity"/>
+        <activity android:name=".ServiceActivity"/>
     </application>
-
 </manifest>

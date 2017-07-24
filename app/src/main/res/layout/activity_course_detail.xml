@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CoursesActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".CourseDetailActivity">
+
+        <com.synnapps.carouselview.CarouselView
+            android:id="@+id/carouselView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:disableAutoPlayOnUserInteraction="true"
+            app:fillColor="#FFFFFFFF"
+            app:pageColor="#00000000"
+            app:radius="4dp"
+            app:strokeColor="#FF777777"
+            app:strokeWidth="1dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:background="@color/colorPrimary"
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/marSmall"
+                android:layout_weight="1"
+                android:text="Address" />
+
+            <Button
+                android:background="@color/colorPrimary"
+                android:id="@+id/contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/marSmall"
+                android:layout_weight="1"
+                android:text="Contacts" />
+
+            <Button
+                android:id="@+id/service"
+                android:background="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/marSmall"
+                android:layout_weight="1"
+                android:text="Sevices" />
+        </LinearLayout>
+
+        <TextView
+            android:text="asdasdasda"
+            android:padding="@dimen/activity_horizontal_margin"
+            style="@style/CustomTextView"
+            android:id="@+id/description"
+            android:textSize="18dp"
+            android:textColor="#000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>
