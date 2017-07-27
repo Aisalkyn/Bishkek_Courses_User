@@ -6,7 +6,7 @@
     <dimen name="img">100dp</dimen>
     <dimen name="cell_height">120dp</dimen>
 
-    <dimen name="grid_img_width">140dp</dimen>
+    <dimen name="grid_img_width">120dp</dimen>
     <dimen name="grid_img_height">160dp</dimen>
 
 </resources>
