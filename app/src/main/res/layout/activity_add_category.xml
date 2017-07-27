@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Название категории:"
+        android:ems="10"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="@color/colorBlack"
+        android:padding="10dp"
+        />
+
+    <EditText
+        android:id="@+id/catName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="7"
+        android:padding="10dp"
+        android:inputType="textPersonName"
+        android:hint="Category name" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Название подкатегории:"
+        android:ems="10"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="@color/colorBlack"
+        android:padding="10dp"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/subCat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="7"
+            android:padding="8dp"
+            android:inputType="textPersonName"
+            android:hint="Subcategory name" />
+        <EditText
+            android:id="@+id/url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="7"
+            android:padding="8dp"
+            android:inputType="textWebEditText"
+            android:hint="image url" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/subCat2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="7"
+            android:padding="8dp"
+            android:inputType="textPersonName"
+            android:hint="Subcategory name" />
+        <EditText
+            android:id="@+id/url2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="7"
+            android:padding="8dp"
+            android:inputType="textWebEditText"
+            android:hint="image url" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/subCat3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="7"
+            android:padding="8dp"
+            android:inputType="textPersonName"
+            android:hint="Subcategory name" />
+        <EditText
+            android:id="@+id/url3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="7"
+            android:padding="8dp"
+            android:inputType="textWebEditText"
+            android:hint="image url" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:textColor="@color/Yellow"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/Yellow"
+            android:background="@null"
+
+            android:text="Save" />
+    </LinearLayout>
+</LinearLayout>

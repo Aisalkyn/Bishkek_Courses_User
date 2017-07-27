@@ -1,40 +1,29 @@
 package aisa.application.model;
 
-import io.realm.RealmList;
-import io.realm.RealmObject;
+import java.util.List;
 
-/**
- * Created by Alier on 7/22/2017.
- */
+public class SimplifiedCourse{
 
-public class SimplifiedCourse extends RealmObject {
     private String name;
     private String description;
-    private RealmList<Image> images;
+    private List<Images> images;
 
-    public SimplifiedCourse(){}
-
-    public RealmList<Image> getImages() {
-        return images;
-    }
-
-    public String getDescription() {
-        return description;
+    public SimplifiedCourse(String n, String d, List<Images> listImg) {
+        this.name = n;
+        this.description = d;
+        this.images = listImg;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setImages(RealmList<Image> images) {
-        this.images = images;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public List<Images> getImages() {
+        return images;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }

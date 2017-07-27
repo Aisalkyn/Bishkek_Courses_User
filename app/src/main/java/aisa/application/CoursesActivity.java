@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import aisa.application.adapter.AdapterSimplifiedCourse;
-import aisa.application.model.ForumService;
-import aisa.application.model.SimplifiedCourse;
-import aisa.application.model.SimplifiedCourses;
+import aisa.application.adapters.AdapterSimplifiedCourse;
+import aisa.application.models.ForumService;
+import aisa.application.models.SimplifiedCourse;
+import aisa.application.models.SimplifiedCourses;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
@@ -24,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static aisa.application.model.ForumService.builder;
+import static aisa.application.models.ForumService.builder;
 
 public class CoursesActivity extends AppCompatActivity {
     @BindView(R.id.listView) ListView listView;

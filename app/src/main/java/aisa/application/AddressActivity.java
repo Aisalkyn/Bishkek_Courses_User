@@ -20,8 +20,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
 
-import aisa.application.model.Branch;
-import aisa.application.model.Course;
+import aisa.application.models.Branch;
+import aisa.application.models.Course;
 import io.realm.Realm;
 import io.realm.RealmList;
 

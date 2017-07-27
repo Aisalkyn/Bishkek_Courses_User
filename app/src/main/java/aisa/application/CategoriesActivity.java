@@ -9,9 +9,9 @@ import android.view.View;
 
 import java.util.List;
 
-import aisa.application.adapter.AdapterRecyclerView;
-import aisa.application.model.Category;
-import aisa.application.model.ForumService;
+import aisa.application.adapters.AdapterRecyclerView;
+import aisa.application.models.Category;
+import aisa.application.models.ForumService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
@@ -22,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static aisa.application.model.ForumService.builder;
+import static aisa.application.models.ForumService.builder;
 
 public class CategoriesActivity extends AppCompatActivity {
 

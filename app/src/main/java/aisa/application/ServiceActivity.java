@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import aisa.application.adapter.AdapterService;
-import aisa.application.model.Course;
-import aisa.application.model.Service;
+import aisa.application.adapters.AdapterService;
+import aisa.application.models.Course;
+import aisa.application.models.Service;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;

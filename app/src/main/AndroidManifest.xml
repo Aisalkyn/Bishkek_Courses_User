@@ -16,7 +16,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBG68yCuZrCf1xKWY6PTszCBk8PmeH3nyU" />
+            android:value="@string/google_maps_key" />
 
         <activity
             android:name=".CategoriesActivity"
@@ -35,5 +35,28 @@
         <activity android:name=".AddressActivity" />
         <activity android:name=".ContactActivity"/>
         <activity android:name=".ServiceActivity"/>
+        <activity
+            android:name=".LoginActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity android:name=".activities.AddCourse"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity android:name=".activities.AddCategory"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity android:name=".activities.AddSubCategory"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+
+        <activity android:name=".activities.DeleteCourse" />
+        <activity android:name=".activities.DeleteCategory" />
+        <activity android:name=".activities.DeleteSubCategory" />
+
     </application>
 </manifest>

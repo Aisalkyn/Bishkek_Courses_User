@@ -1,3 +1,52 @@
 <resources>
     <string name="app_name">Courses</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="inputTypes">
+        <item>Facebook</item>
+        <item>VK</item>
+        <item>Twitter</item>
+        <item>LinkedIn</item>
+        <item>WebSite</item>
+
+    </string-array>
+
+    <string-array name="course_options">
+        <item>Добавить курс</item>
+        <item>Добавить категорию</item>
+        <item>Добавить подкатегорию</item>
+        <item>Удалить курс</item>
+        <item>Удалить категорию</item>
+        <item>Удалить подкатегорию</item>
+    </string-array>
+
+    <string-array name="kategory">
+        <item>Наука</item>
+        <item>Языки</item>
+        <item>Курсы</item>
+
+    </string-array>
+    <string-array name="nauka">
+        <item>Химия</item>
+        <item>Биология</item>
+        <item>Физика</item>
+
+    </string-array>
+    <string-array name="yazyki">
+        <item>English</item>
+        <item>Russian</item>
+        <item>Kyrgyz</item>
+
+    </string-array>
+    <string-array name="kursy">
+        <item>Drawing</item>
+        <item>Driving</item>
+        <item>Cooking</item>
+
+    </string-array>
+    <string name="title_activity_delete_course">DeleteCourse</string>
+    <string name="error_deleting">You cannot delete this category. There is a course in it</string>
+
 </resources>

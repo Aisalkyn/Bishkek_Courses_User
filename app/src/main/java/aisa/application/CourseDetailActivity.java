@@ -13,8 +13,8 @@ import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ViewListener;
 
-import aisa.application.model.Course;
-import aisa.application.model.ForumService;
+import aisa.application.models.Course;
+import aisa.application.models.ForumService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -24,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static aisa.application.model.ForumService.builder;
+import static aisa.application.models.ForumService.builder;
 
 public class CourseDetailActivity extends AppCompatActivity {
     @BindView(R.id.carouselView)

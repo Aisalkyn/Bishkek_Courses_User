@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import aisa.application.adapter.AdapterGrid;
-import aisa.application.model.Category;
-import aisa.application.model.SubCategory;
+import aisa.application.adapters.AdapterGrid;
+import aisa.application.models.Category;
+import aisa.application.models.SubCategory;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
